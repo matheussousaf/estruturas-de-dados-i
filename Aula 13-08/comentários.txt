@@ -1,0 +1,1 @@
+1. Importante revisar struct e typedef.
