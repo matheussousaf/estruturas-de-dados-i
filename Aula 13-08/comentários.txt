@@ -1,1 +1,7 @@
 1. Importante revisar struct e typedef.
+
+Notas:
+
+Primeiro exercício: a soma não cabe em um long long int, então deixei a iteração em um número pequeno.
+
+Segundo exercício: concluído e corrigido.

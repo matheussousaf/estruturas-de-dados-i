@@ -1,29 +1,28 @@
 #include <stdio.h>
 #include <locale.h>
 
-//Primeiro ExercÃ­cio
+//Primeiro Exercício
 
 /* 
 	* Disciplina: Estrutura de Dados I
 	* Professor: Walace Bonfim
-
 */ 
 
 int main(){
-	int i, soma = 0, ultimo;
+	int i;
 	
-	signed long int n = 1;
+	long long int n = 1, soma = 0, ultimo;
 	
 	setlocale(LC_ALL, "Portuguese");
 	
 	for(i=0;i<64;i++){
 		ultimo = n;
 		soma = soma + ultimo;
-		n = n * 2;
+		n = 2 * n;
 		ultimo = n;
 	}
 	
-	printf("Nï¿½mero: %hi", n);
+	printf("Número: %lld", soma);
 	
 	return 0;
 }
