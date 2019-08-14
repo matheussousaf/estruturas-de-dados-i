@@ -1,4 +1,4 @@
-### Repositório para Exercícios da Disciplina de Estrutura de Dados I
+## Repositório para Exercícios da Disciplina de Estrutura de Dados I
 
 
 ##### Professor: Walace Bonfim
