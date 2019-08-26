@@ -10,7 +10,7 @@
 int main(){
 	int i;
 	
-	long long int n = 1, soma = 0, ultimo;
+	unsigned long long int n = 1, soma = 0, ultimo;
 	
 	for(i=0;i<64;i++){
 		ultimo = n;
@@ -18,10 +18,8 @@ int main(){
 		n = 2 * n;
 		ultimo = n;
 	}
-	
-	//Obs.: Embora o algoritmo esteja correto, o número é grande demais para caber em uma variável, até mesmo long long int.
-	
-	printf("Numero: %lli", soma);
+
+	printf("Numero: %llu", soma);
 	
 	return 0;
 }
