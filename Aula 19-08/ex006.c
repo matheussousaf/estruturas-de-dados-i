@@ -16,25 +16,27 @@ typedef struct{
 	double comprimento;
 }REGISTRO;
 
-REGISTRO registro[100];
 
 int main(){
+	
+	REGISTRO registro[100];
+	
 	int tamanhoLista;
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	tamanhoLista = armazenando_registros();
+	tamanhoLista = armazenando_registros(registro);
 	
 	printf("\n\n");
 	
-	mostrando_registros(tamanhoLista);
+	mostrando_registros(tamanhoLista, registro);
 	
 	
 	return 0;
 }
 
 //Mostrar registros
-void mostrando_registros(int i){
+void mostrando_registros(int i, REGISTRO *registro){
 	int j;
 	double areatotal = 0;
 	
@@ -53,8 +55,10 @@ void mostrando_registros(int i){
 }
 
 //Armazenar registros
-int armazenando_registros(){
-		int i = 0;
+int armazenando_registros(REGISTRO *registro){
+	
+	int i = 0;
+	
 	char pergunta;
 	
 	
