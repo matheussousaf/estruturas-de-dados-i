@@ -1,0 +1,46 @@
+Características de uma lista:
+
+Obs.: É uma especialização de array (é uma derivação de um tipo pré estabelecido)
+
+=> EXEMPLO:
+
+ContaBancária{
+    nome;
+    saldo;
+}
+
+ContaPoupança{
+    //Tem todas as características de uma conta bancária + rendimento
+    nome;
+    saldo;
+    rendimento;
+}
+
+
+1. Sempre inicia no 0;
+2. Tem uma variável "n" que controla o próximo valor não ocupado;
+3. Não pode se introduzir uma variável em qualquer lugar, apenas no "n";
+4. Em ordem de retirar ou adicionar um valor na lista, ele deve ser devidamente alterado. 
+
+=> EXEMPLO: 
+
+VETOR vet;
+-> [0(valor_do_0)][1(valor_do_1)][2(valor_do_2)][3(valor_do_3)][4(vazio)]
+
+# Caso seja preciso retirar um valor na lista no index "2", precisamos realocar todos os outros valores.
+
+VETOR vet;
+-> [0(ocupado)][1(ocupado)][2(vazio)][3(ocupado)][4(vazio)]
+
+# De forma que:
+
+VETOR vet;
+-> [0(valor_do_0)][1(valor_do_1)][2(valor_do_3)][3(vazio)][4(vazio)]
+
+# Da mesma forma, caso seja preciso adicionar um valor na lista no index "1", precisamos realocar todos os outros valores.
+
+VETOR vet;
+-> [0(valor_do_0)][1(valor_do_1)][2(valor_do_3)][3(vazio)][4(vazio)]
+
+VETOR vet;
+-> [0(valor_do_0)][1(novo_valor)][2(valor_do_1)][3(valor_do_3)][4(vazio)]
