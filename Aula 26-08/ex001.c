@@ -31,7 +31,7 @@ typedef struct{
 
 int main(){
 	
-	REGISTRO registro[100];
+	REGISTRO *registro;
 	
 	int tamanhoLista;
 	
@@ -47,14 +47,6 @@ int main(){
 }
 
 
-//Próximo registro (para alocação dinâmica)
-int proximo_registro(char valor, struct REGISTRO **reg){
-	if(valor == 'S' || valor == 's'){
-		*reg = (REGISTRO *) malloc(sizeof(REGISTRO)); 
-		return 1;
-	}
-	else return 0;
-}
 
 //Mostrar registros
 void mostrando_registros(int i, REGISTRO *registro){
@@ -73,6 +65,16 @@ void mostrando_registros(int i, REGISTRO *registro){
 	}
 	
 	printf("\nÁrea total da casa: %.2lf m²", areatotal);
+}
+
+//Próximo registro (para alocação dinâmica)
+int proximo_registro(char valor, struct REGISTRO **reg){
+	if(valor == 'S' || valor == 's'){
+		reg->prox = (REGISTRO *) malloc(sizeof(REGISTRO));
+		*reg = *reg->prox;
+		return 1;
+	}
+	else return 0;
 }
 
 //Armazenar registros
