@@ -4,24 +4,26 @@
 #include <string.h>
 #include <unistd.h>
 
+#define TAMANHO_LISTA_DISCIPLINAS 3
+#define TAMANHO_LISTA_ALUNOS 60
+
 //Tipos
 typedef struct Aluno Aluno;
-
 typedef struct Disciplina Disciplina;
 
 struct Disciplina{
     char nome[30];
-    double nota;
+    float nota;
     Aluno *alunoReferente;
 };
 
 struct Aluno{
     char matricula[15];
-    Disciplina disciplinas[3];
+    Disciplina disciplinas[TAMANHO_LISTA_DISCIPLINAS];
 };
 
 typedef struct lista_Aluno{
-    Aluno alunos[60];
+    Aluno alunos[TAMANHO_LISTA_ALUNOS];
     int i;
 }lista_Aluno;
 
@@ -29,16 +31,16 @@ typedef struct lista_Aluno{
 //Funcionalidades
 lista_Aluno criar(); //Cria a lista
 Aluno cadastroAluno(Aluno *aluno); //Cadastra o aluno
-void cadastrarNovoAluno(lista_Aluno *listaDeAlunos); //OpÃ§Ã£o de cadastrar no menu
-void verHistorico(char matricula[], lista_Aluno *listaDeAlunos); //OpÃ§Ã£o de ver o histÃ³rico no menu
+void cadastrarNovoAluno(lista_Aluno *listaDeAlunos); //Opção de cadastrar no menu
+void verHistorico(char matricula[], lista_Aluno *listaDeAlunos); //Opção de ver o histórico no menu
 
-//FunÃ§Ãµes auxiliares
+//Funções auxiliares
 void clear();
 void printMenu();
 
 int main(){
 
-    //Mudando typeset pra PortuguÃªs
+    //Mudando typeset pra Português
     setlocale(LC_ALL, "Portuguese");
 
     //Inicializando a lista de alunos
@@ -47,10 +49,10 @@ int main(){
     int esc = 4;
     char matricula[15];
 
-    //CabeÃ§alho
-    printf("Aluno: Matheus de Sousa FigueirÃªdo\n");
-    printf("MatrÃ­cula: 1820023833\n");
-    printf("CiÃªncias da ComputaÃ§Ã£o - Terceiro PerÃ­odo\n");
+    //Cabeçalho
+    printf("Aluno: Matheus de Sousa Figueirêdo\n");
+    printf("Matrícula: 1820023833\n");
+    printf("Ciências da Computação - Terceiro Período\n");
     printf("\n");
 
     //Loop principal
@@ -62,34 +64,34 @@ int main(){
         printMenu();
         printf("\n");
 
-        printf("-> Escolha uma opÃ§Ã£o: ");
+        printf("-> Escolha uma opção: ");
         scanf("%d", &esc);
         clear();
 
         switch (esc){
         case 0:
-            printf("# VocÃª saiu do programa!\n");
+            printf("# Você saiu do programa!\n");
             break;
         case 1:
             cadastrarNovoAluno(&listaDeAlunos);
             break;
         case 2:
-            printf("# Digite a matrÃ­cula: ");
+            printf("# Digite a matrícula: ");
             scanf("%s", matricula);
             clear();
             verHistorico(matricula, &listaDeAlunos);
             break;
         default:
-            printf("# Comando nÃ£o existente!\n");
+            printf("# Comando não existente!\n");
         }
     }
     return 0;
 }
 
 void printMenu(){
-    printf("===== MENU DE OPÃ‡Ã•ES =====\n");
+    printf("===== MENU DE OPÇÕES =====\n");
     printf("1 - Cadastrar um aluno\n");
-    printf("2 - Exibir histÃ³ricos (por matricula)\n");
+    printf("2 - Exibir históricos (por matricula)\n");
     printf("0 - Sair\n");
     printf("==========================\n");
 }
@@ -97,16 +99,16 @@ void printMenu(){
 Aluno cadastroAluno(Aluno *aluno){
     int i;
 
-    printf("Digite aqui a matrÃ­cula: ");
+    printf("Digite aqui a matrícula: ");
     scanf("%s", aluno->matricula);
     clear();
 
     for (i = 0; i < 3; i++){
-        printf("Nome da %dÂª disciplina: ", i+1); 
+        printf("Nome da %dª disciplina: ", i+1); 
         scanf("%s" , aluno->disciplinas[i].nome);
 
         printf("Nota: "); 
-        scanf("%lf", &aluno->disciplinas[i].nota);
+        scanf("%f", &aluno->disciplinas[i].nota);
         clear();
     }
 
@@ -131,20 +133,21 @@ void cadastrarNovoAluno(lista_Aluno *listaDeAlunos){
 void verHistorico(char *matricula, lista_Aluno *listaDeAlunos){
     int i, j;
 
-    printf("# Pesquisando por matrÃ­cula '%s' em %d registros...\n", matricula, listaDeAlunos->i);
+    printf("# Pesquisando por matrícula '%s' em %d registros...\n", matricula, listaDeAlunos->i);
     sleep(1);
 
     for (i = 0; i < listaDeAlunos->i; i++){
         if(strcmp(matricula, listaDeAlunos->alunos[i].matricula) == 0){
-            printf("# MatrÃ­cula encontrada!\n");
+        	printf("\n");
+            printf("# Matrícula encontrada!\n");
 
             for (j = 0; j < 3; j++){
-                printf("%dÂª Disciplina: %s\n", j+1, listaDeAlunos->alunos[i].disciplinas[j].nome);
-                printf("Nota: %.2lf\n", listaDeAlunos->alunos[i].disciplinas[j].nota);
+                printf("%dª Disciplina: %s\n", j+1, listaDeAlunos->alunos[i].disciplinas[j].nome);
+                printf("Nota: %.2f\n", listaDeAlunos->alunos[i].disciplinas[j].nota);
             }
             return;
         }
-        else printf("PosiÃ§Ã£o atual: %d\n", i);
+        else printf("Posição atual: %d\n", i);
     }
     printf("# Nenhum aluno encontrado na base de dados!\n");
 }
@@ -159,4 +162,5 @@ lista_Aluno criar(){
 void clear(){
     int c;
     while((c = getchar()) != '\n' && c != EOF);
+    fflush(stdin);
 }
