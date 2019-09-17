@@ -7,20 +7,15 @@
 #define TAMANHO_LISTA_DISCIPLINAS 3
 #define TAMANHO_LISTA_ALUNOS 60
 
-//Tipos
-typedef struct Aluno Aluno;
-typedef struct Disciplina Disciplina;
-
-struct Disciplina{
+typedef struct Disciplina{
     char nome[30];
     float nota;
-    Aluno *alunoReferente;
-};
+}Disciplina;
 
-struct Aluno{
+typedef struct Aluno{
     char matricula[15];
     Disciplina disciplinas[TAMANHO_LISTA_DISCIPLINAS];
-};
+}Aluno;
 
 typedef struct lista_Aluno{
     Aluno alunos[TAMANHO_LISTA_ALUNOS];
@@ -119,8 +114,6 @@ Aluno cadastroAluno(Aluno *aluno){
         printf("Nota: "); 
         scanf("%f", &aluno->disciplinas[i].nota);
         clear();
-
-        aluno->disciplinas[i].alunoReferente = aluno;
     }
 
     return *aluno;
@@ -134,6 +127,7 @@ void cadastrarNovoAluno(lista_Aluno *listaDeAlunos){
         listaDeAlunos->alunos[listaDeAlunos->i] = cadastroAluno((&listaDeAlunos->alunos[listaDeAlunos->i]));
         listaDeAlunos->i++;
 
+		printf("\n");
         printf("Deseja continuar? [S/N]: "); 
         scanf("%c", &esc);
         clear();
