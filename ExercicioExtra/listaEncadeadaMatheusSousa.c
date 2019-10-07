@@ -234,7 +234,7 @@ int main(){
             printf("\n# Informe a posição final: ");
             scanf("%d", &pos_final);
 
-            for(c = pos_inicial; c <= pos_final; c++){
+            for(c = pos_final; c >= pos_inicial; c--){
                 remover(&I, c-1);
             }
 
