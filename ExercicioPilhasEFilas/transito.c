@@ -142,9 +142,17 @@ int main() {
     sinalA = criaSemaforo();
     SEMAFORO * sinalB;
     sinalB = criaSemaforo();
-
-
-    escreverDigitando("Tudo estava vazio até que de repente...\n\n");
+    
+    escreverDigitando("ALUNO: Matheus de Sousa Figueirêdo\n");
+    Sleep(100);
+    escreverDigitando("DISCIPLINA: Estrutura de Dados I\n");
+    Sleep(100);
+    escreverDigitando("PROFESSOR: Walace Bonfim\n");
+    
+    printf("\n");
+	
+	Sleep(1000);
+    escreverDigitando("Tudo estava vazio no cruzamento da Av. Walace Bonfim até que de repente...\n\n");
     // Loop infinito do semÃ¡foro.
     while(1){
     	Sleep(3500);
